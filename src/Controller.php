@@ -7,7 +7,10 @@ require_once("View.php");
 class Controller
 {
     private View $view;
+
     const DEFAULT_PAGE = "home";
+    const LOGIN_PAGE = "login";
+    const REGISTER_PAGE = "register";
 
     public function __construct()
     {
@@ -16,28 +19,31 @@ class Controller
 
     public function run()
     {
-        switch ($this->getParams()) {
-            case 'login':
-                $page = "login";
-                $this->view->render($page);
+        $action = $this->getAction();
+        $this->pageRouting($action);
+
+        $page = $action;
+        $this->view->render($page);
+    }
+
+    public function pageRouting(string $action)
+    {
+        switch ($action) {
+            case self::LOGIN_PAGE:
+                return self::LOGIN_PAGE;
                 break;
-            case 'register':
-                $page = "register";
-                $this->view->render($page);
+            case self::REGISTER_PAGE:
+                return self::REGISTER_PAGE;
                 break;
 
             default:
-                $page = self::DEFAULT_PAGE;
-                $this->view->render($page);
+                return self::DEFAULT_PAGE;
                 break;
         }
     }
 
-    public function getParams()
+    public function getAction(): string
     {
-        if (!empty($_GET)) {
-            $action = $_GET["action"];
-            return $action;
-        } else return self::DEFAULT_PAGE;
+        return !empty($_GET["action"]) ? $_GET["action"] : self::DEFAULT_PAGE;
     }
 }
