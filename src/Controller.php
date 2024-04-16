@@ -17,7 +17,7 @@ class Controller
         $this->view = new View();
     }
 
-    public function run()
+    public function run(): void
     {
         $action = $this->getAction();
         $this->pageRouting($action);
@@ -26,7 +26,7 @@ class Controller
         $this->view->render($page);
     }
 
-    public function pageRouting(string $action)
+    public function pageRouting(string $action): string
     {
         switch ($action) {
             case self::LOGIN_PAGE:
