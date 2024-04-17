@@ -1,3 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+include_once("./src/LoginController.php");
+$loginController = new LoginController;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $loginController->handleLogin();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

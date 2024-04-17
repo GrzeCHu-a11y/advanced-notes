@@ -1,3 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+include_once("./src/RegisterController.php");
+$registerController = new RegisterController;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $registerController->handleRegister();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
