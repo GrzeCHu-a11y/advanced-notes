@@ -7,11 +7,13 @@ $registerController = new RegisterController();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $email = $_POST["email"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $data = [
+        "email" => $_POST["email"],
+        "username" => $_POST["username"],
+        "password" => $_POST["password"],
+    ];
 
-    $registerController->handleRegister($email, $password, $username);
+    $registerController->handleRegister($data);
 }
 
 ?>

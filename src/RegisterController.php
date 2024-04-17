@@ -12,7 +12,7 @@ class RegisterController
         $this->dbConfig = new Config();
     }
 
-    public function handleRegister(string $email, string $password, string $username)
+    public function handleRegister(array $data)
     {
         $conn = new mysqli(Config::$servername, Config::$username, Config::$password, Config::$database);
 
@@ -20,9 +20,9 @@ class RegisterController
             die("Connection Failed:" . $conn->connect_error);
         }
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($data["password"], PASSWORD_DEFAULT);
         $sql = $conn->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?)");
-        $sql->bind_param("sss", $email, $hashedPassword, $username);
+        $sql->bind_param("sss", $data["email"], $hashedPassword, $data["username"]);
 
         if ($sql->execute()) {
             echo "User Created";
