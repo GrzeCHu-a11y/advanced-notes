@@ -1,4 +1,7 @@
 <?php
 
 declare(strict_types=1);
-require_once("layout.php");
+require_once("src/Controller.php");
+
+$controller = new Controller();
+$controller->run();
