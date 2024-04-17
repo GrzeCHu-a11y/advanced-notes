@@ -20,14 +20,29 @@ class RegisterController
             die("Connection Failed:" . $conn->connect_error);
         }
 
-        $hashedPassword = password_hash($data["password"], PASSWORD_DEFAULT);
-        $sql = $conn->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?)");
-        $sql->bind_param("sss", $data["email"], $hashedPassword, $data["username"]);
+        $email = $data["email"];
 
-        if ($sql->execute()) {
-            echo "User Created";
-        } else echo "error" . $sql->error;
+        $sql = $conn->prepare("SELECT * FROM users WHERE email = ?");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $result = $sql->get_result();
 
-        $conn->close();
+        if ($result->num_rows > 0) {
+
+            echo "user alredy exist";
+        } else {
+
+            $hashedPassword = password_hash($data["password"], PASSWORD_DEFAULT);
+            $sql = $conn->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?)");
+            $sql->bind_param("sss", $data["email"], $hashedPassword, $data["username"]);
+
+            if ($sql->execute()) {
+                echo "User Created";
+            } else echo "error" . $sql->error;
+        }
+
+
+
+        // $conn->close();
     }
 }
