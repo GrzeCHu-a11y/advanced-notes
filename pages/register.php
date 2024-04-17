@@ -1,12 +1,17 @@
 <?php
 
 declare(strict_types=1);
-
 include_once("./src/RegisterController.php");
-$registerController = new RegisterController;
+
+$registerController = new RegisterController();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $registerController->handleRegister();
+
+    $email = $_POST["email"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $registerController->handleRegister($email, $password, $username);
 }
 
 ?>
@@ -30,6 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" />
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputUsername" aria-describedby="username" name="username" />
+                    <div id="username" class="form-text">username</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
