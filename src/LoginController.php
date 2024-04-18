@@ -2,14 +2,17 @@
 
 declare(strict_types=1);
 include_once("./database_config/config.php");
+include_once("Controller.php");
 
 class LoginController
 {
     private $dbConfig;
+    private $controller;
 
     public function __construct()
     {
         $this->dbConfig = new Config();
+        $this->controller = new Controller();
     }
 
     public function handleLogin(array $data)
@@ -33,6 +36,12 @@ class LoginController
 
                 if (password_verify($passwordFromForm, $storedPasswordHash)) {
                     echo "Login successful";
+                    // $this->controller->pageRouting("dashboard");
+                    header("Location: /pages/dashboard.php");
+
+
+
+                    exit();
                 } else {
                     echo "Error: Incorrect password";
                 }
