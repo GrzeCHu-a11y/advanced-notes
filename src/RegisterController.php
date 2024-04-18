@@ -41,8 +41,6 @@ class RegisterController
             } else echo "error" . $sql->error;
         }
 
-
-
-        // $conn->close();
+        $conn->close();
     }
 }

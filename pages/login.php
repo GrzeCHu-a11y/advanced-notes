@@ -6,7 +6,9 @@ include_once("./src/LoginController.php");
 $loginController = new LoginController;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $loginController->handleLogin();
+    $data = ["email" => $_POST["email"], "password" => $_POST["password"]];
+
+    $loginController->handleLogin($data);
 }
 
 ?>
