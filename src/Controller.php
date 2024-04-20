@@ -11,6 +11,7 @@ class Controller
     const DEFAULT_PAGE = "home";
     const LOGIN_PAGE = "login";
     const REGISTER_PAGE = "register";
+    const DASHBOARD_PAGE = "dashboard";
 
     public function __construct()
     {
@@ -34,6 +35,9 @@ class Controller
                 break;
             case self::REGISTER_PAGE:
                 return self::REGISTER_PAGE;
+                break;
+            case self::DASHBOARD_PAGE:
+                return self::DASHBOARD_PAGE;
                 break;
 
             default:
