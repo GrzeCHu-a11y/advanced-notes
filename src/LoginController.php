@@ -39,7 +39,7 @@ class LoginController
                     $_SESSION["email"] = $row["email"];
                     $_SESSION["id"] = $row["id"];
 
-                    header("Location: /pages/dashboard.php");
+                    header("Location: /?action=dashboard");
 
                     exit();
                 } else {

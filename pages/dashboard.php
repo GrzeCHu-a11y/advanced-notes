@@ -1,6 +1,4 @@
 <?php
-$page = "dashboard";
-include_once("../layout.php");
 
 session_start();
 
@@ -20,9 +18,11 @@ if (!isset($_SESSION["id"])) {
 </head>
 
 <body>
-    <h1>Dashboard</h1>
-    <?php echo $_SESSION["username"] . " " . $_SESSION["email"] ?>
-    <button><a href="/helpers/logout.php">logout</a></button>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <?php echo $_SESSION["username"] . " " . $_SESSION["email"] ?>
+        <button><a href="/helpers/logout.php">logout</a></button>
+    </div>
 </body>
 
 </html>
