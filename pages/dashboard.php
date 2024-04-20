@@ -2,6 +2,11 @@
 $page = "dashboard";
 include_once("../layout.php");
 
+session_start();
+
+if (!isset($_SESSION["id"])) {
+    header("Location: /");
+}
 
 ?>
 <!DOCTYPE html>
@@ -16,6 +21,8 @@ include_once("../layout.php");
 
 <body>
     <h1>Dashboard</h1>
+    <?php echo $_SESSION["username"] . " " . $_SESSION["email"] ?>
+    <button><a href="/helpers/logout.php">logout</a></button>
 </body>
 
 </html>

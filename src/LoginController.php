@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 include_once("./database_config/config.php");
-include_once("Controller.php");
+
+session_start();
 
 class LoginController
 {
     private $dbConfig;
-    private $controller;
 
     public function __construct()
     {
         $this->dbConfig = new Config();
-        $this->controller = new Controller();
     }
 
     public function handleLogin(array $data)
@@ -35,11 +34,12 @@ class LoginController
                 $passwordFromForm = $data["password"];
 
                 if (password_verify($passwordFromForm, $storedPasswordHash)) {
-                    echo "Login successful";
-                    // $this->controller->pageRouting("dashboard");
+
+                    $_SESSION["username"] = $row["username"];
+                    $_SESSION["email"] = $row["email"];
+                    $_SESSION["id"] = $row["id"];
+
                     header("Location: /pages/dashboard.php");
-
-
 
                     exit();
                 } else {
