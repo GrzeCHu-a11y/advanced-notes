@@ -3,8 +3,6 @@
 declare(strict_types=1);
 include_once("./database_config/config.php");
 
-session_start();
-
 class LoginController
 {
     private $dbConfig;

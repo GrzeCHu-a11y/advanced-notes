@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,21 +23,38 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Project</a>
-                    </li>
+                    <?php if (isset($_SESSION["id"])) :  ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/?action=dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/?action=createnote">Create note</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About Project</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
-                <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-outline-secondary me-2">
-                        <a href="/?action=login">Login</a>
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        <a href="/?action=register">Register</a>
-                    </button>
-                </div>
+                <?php if (!isset($_SESSION["id"])) :  ?>
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-outline-secondary me-2">
+                            <a href="/?action=login">Login</a>
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            <a href="/?action=register">Register</a>
+                        </button>
+                    </div>
+                <?php else : ?>
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-outline-secondary me-2">
+                            <a href="helpers/logout.php">Logout</a>
+                        </button>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
