@@ -20,6 +20,11 @@
                 <p>This is the initial editor content.</p>
             </div>
 
+            <form action="../helpers/proces_editor_data.php" method="post">
+                <input type="hidden" name="editorData" id="editorData">
+                <button type="submit">Submit</button>
+            </form>
+
             <script>
                 DecoupledEditor
                     .create(document.querySelector('#editor'))
@@ -27,6 +32,13 @@
                         const toolbarContainer = document.querySelector('#toolbar-container');
 
                         toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
+                        editor.model.document.on('change:data', () => {
+                            const editorData = editor.getData();
+                            document.getElementById('editorData').value = editorData;
+                        });
+
+
                     })
                     .catch(error => {
                         console.error(error);

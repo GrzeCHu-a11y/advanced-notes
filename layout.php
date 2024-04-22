@@ -28,7 +28,7 @@
                             <a class="nav-link active" aria-current="page" href="/?action=dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/?action=createnote">Create note</a>
+                            <a class="nav-link" href="/?action=createdoc">Document Editor</a>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
