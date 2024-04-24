@@ -12,17 +12,22 @@
         <div class="container">
             <h3>Document editor</h3>
 
+
             <!-- The toolbar will be rendered in this container. -->
             <div id="toolbar-container"></div>
 
             <!-- This container will become the editable. -->
             <div id="editor">
-                <p>This is the initial editor content.</p>
+                <p>type here</p>
             </div>
 
             <form action="../helpers/proces_editor_data.php" method="post">
                 <input type="hidden" name="editorData" id="editorData">
-                <button type="submit">Submit</button>
+                <br>
+                <label class="form-label" for="noteTitle">Note title</label>
+                <input class="form-control" type="text" id="noteTitle" name="noteTitle" />
+                <br>
+                <button type="submit" class="btn btn-default">Submit</button>
             </form>
 
             <script>

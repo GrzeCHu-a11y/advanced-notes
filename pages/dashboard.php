@@ -17,8 +17,8 @@ if (!isset($_SESSION["id"])) {
 <body>
     <section>
         <div class="container">
-            <h1><?php echo "Welcome" . " " . $_SESSION["username"] ?></h1>
-            <h3>Pined notes</h3>
+            <h3><?php echo "Welcome" . " " . $_SESSION["username"] ?></h3>
+            <h3>Recent</h3>
         </div>
     </section>
 </body>

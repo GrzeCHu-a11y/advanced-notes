@@ -25,7 +25,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php if (isset($_SESSION["id"])) :  ?>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/?action=dashboard">Dashboard</a>
+                            <a class="nav-link" aria-current="page" href="/?action=dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/?action=createdoc">Document Editor</a>

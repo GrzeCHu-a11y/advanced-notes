@@ -19,7 +19,7 @@ class ProcesEditorData
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $editorData = $_POST["editorData"];
-            $title = "title";
+            $title = $_POST["noteTitle"];
 
             $con = new mysqli(Config::$servername, Config::$username, Config::$password, Config::$database);
 
@@ -32,7 +32,7 @@ class ProcesEditorData
             $sql->execute();
 
             header("Location: /?action=dashboard");
-        } else header("Location: /");
+        }
     }
 }
 
