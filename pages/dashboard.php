@@ -24,17 +24,22 @@ $notes = $fetchAllNotes->getAllNotes();
 <body>
     <section>
         <div class="container">
-            <div class="accordion" id="accordionExample">
+            <h3>Notes list</h3>
+            <div class="row">
                 <?php foreach ($notes as $key => $note) : ?>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading<?php echo $key; ?>">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $key; ?>" aria-expanded="false" aria-controls="collapse<?php echo $key; ?>">
-                                <?php echo $note['title'] ?>
-                            </button>
-                        </h2>
-                        <div id="collapse<?php echo $key; ?>" class="accordion-collapse collapse" aria-labelledby="heading<?php echo $key; ?>" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <?php echo $note['content'] ?>
+                    <div class="col-sm-6 pt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $note["title"] ?></h5>
+                                <p class="card-text">
+                                    <?php $content = substr($note["content"], 0, 15);
+                                    if (strlen($note["content"])) {
+                                        $content .= "...";
+                                    }
+                                    echo $content;
+                                    ?>
+                                </p>
+                                <a href="#" class="btn btn-primary">open</a>
                             </div>
                         </div>
                     </div>
