@@ -1,3 +1,16 @@
+<?php
+require_once("src/QueryController.php");
+
+$query = new QueryController();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $editorData = $_POST["editorData"];
+    $title = $_POST["noteTitle"];
+
+    $query->sendNote($title, $editorData);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +34,7 @@
                 <p>type here</p>
             </div>
 
-            <form action="../helpers/proces_editor_data.php" method="post">
+            <form method="post">
                 <input type="hidden" name="editorData" id="editorData">
                 <br>
                 <label class="form-label" for="noteTitle">Note title</label>

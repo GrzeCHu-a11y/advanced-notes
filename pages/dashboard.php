@@ -6,10 +6,9 @@ if (!isset($_SESSION["id"])) {
     header("Location: /");
 }
 
-require_once("helpers/fetchAllNotes.php");
-
-$fetchAllNotes = new FetchAllNotes();
-$notes = $fetchAllNotes->getAllNotes();
+require_once("src/QueryController.php");
+$query = new QueryController();
+$notes = $query->getNotes();
 
 ?>
 <!DOCTYPE html>

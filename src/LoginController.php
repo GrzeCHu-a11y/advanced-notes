@@ -1,20 +1,20 @@
 <?php
 
 declare(strict_types=1);
-include_once("./database_config/config.php");
+include_once("QueryController.php");
 
 class LoginController
 {
-    private $dbConfig;
+    private $query;
 
     public function __construct()
     {
-        $this->dbConfig = new Config();
+        $this->query = new QueryController();
     }
 
     public function handleLogin(array $data)
     {
-        $con = new mysqli(Config::$servername, Config::$username, Config::$password, Config::$database);
+        $con = $this->query->connect();
 
         if ($con->connect_error) {
             die("error" . $con->connect_error);
