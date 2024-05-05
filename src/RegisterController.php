@@ -1,24 +1,20 @@
 <?php
 
 declare(strict_types=1);
-require_once("database_config/config.php");
+require_once("QueryController.php");
 
 class RegisterController
 {
-    private $dbConfig;
+    private $query;
 
     public function __construct()
     {
-        $this->dbConfig = new Config();
+        $this->query = new QueryController();
     }
 
     public function handleRegister(array $data)
     {
-        $conn = new mysqli(Config::$servername, Config::$username, Config::$password, Config::$database);
-
-        if ($conn->connect_error) {
-            die("Connection Failed:" . $conn->connect_error);
-        }
+        $conn = $this->query->connect();
 
         $email = $data["email"];
 
