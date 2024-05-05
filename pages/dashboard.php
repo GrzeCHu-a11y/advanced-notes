@@ -25,7 +25,7 @@ $notes = $query->getNotes();
         <div class="container">
             <h3>Notes list</h3>
             <div class="row">
-                <?php foreach ($notes as $key => $note) : ?>
+                <?php foreach ($notes as $note) : ?>
                     <div class="col-sm-6 pt-5">
                         <div class="card">
                             <div class="card-body">
@@ -38,7 +38,7 @@ $notes = $query->getNotes();
                                     echo $content;
                                     ?>
                                 </p>
-                                <button type="button" class="btn btn-outline-success">Open</button>
+                                <button type="button" class="btn btn-outline-success"><a href="/?action=note&id=<?php echo $note["id"] ?>">Open</a></button>
                                 <button type="button" class="btn btn-outline-danger">Delete</button>
                                 <button type="button" class="btn btn-outline-warning">Edit</button>
                             </div>

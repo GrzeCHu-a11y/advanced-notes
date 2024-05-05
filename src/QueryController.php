@@ -47,4 +47,24 @@ class QueryController
 
         header("Location: /?action=dashboard");
     }
+
+    public function openNote(): array
+    {
+        $id = $_GET['id'];
+        $con = $this->connect();
+        $sql = $con->prepare("SELECT * FROM notes WHERE id = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = $sql->get_result();
+
+        $data = ["title" => "", "content" => ""];
+
+        foreach ($result as $note) {
+            $data["title"] = $note["title"];
+            $data["content"] = $note["content"];
+        }
+
+        return $data;
+    }
 }
