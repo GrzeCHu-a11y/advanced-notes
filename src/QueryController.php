@@ -7,6 +7,7 @@ require_once("config/config.php");
 class QueryController
 {
     private $dbConfig;
+    private $controller;
 
     public function __construct()
     {
