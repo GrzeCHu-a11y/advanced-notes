@@ -39,7 +39,9 @@ $notes = $fetchAllNotes->getAllNotes();
                                     echo $content;
                                     ?>
                                 </p>
-                                <a href="#" class="btn btn-primary">open</a>
+                                <button type="button" class="btn btn-outline-success">Open</button>
+                                <button type="button" class="btn btn-outline-danger">Delete</button>
+                                <button type="button" class="btn btn-outline-warning">Edit</button>
                             </div>
                         </div>
                     </div>
