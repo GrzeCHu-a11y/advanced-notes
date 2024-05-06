@@ -2,7 +2,15 @@
 
 declare(strict_types=1);
 
-require_once("config/config.php");
+if (file_exists('config/config.php')) {
+    require_once 'config/config.php';
+} elseif (file_exists('../config/config.php')) {
+    require_once '../config/config.php';
+} else {
+    die('Nie można znaleźć pliku konfiguracyjnego.');
+}
+
+
 
 class QueryController
 {
@@ -12,6 +20,19 @@ class QueryController
     public function __construct()
     {
         $this->dbConfig = new Config();
+    }
+
+    public function handleAction(string $action): void
+    {
+        switch ($action) {
+            case Controller::OPEN_NOTE:
+                $this->openNote();
+                break;
+
+            default:
+                # code...
+                break;
+        }
     }
 
     public function connect(): mysqli

@@ -38,7 +38,12 @@ $notes = $query->getNotes();
                                     echo $content;
                                     ?>
                                 </p>
-                                <button type="button" class="btn btn-outline-success"><a href="/?action=note&id=<?php echo $note["id"] ?>">Open</a></button>
+                                <form method="get" action="/?action=openNote"> <!-- Używamy GET, ponieważ przekazujemy parametry w adresie URL -->
+                                    <input type="hidden" name="action" value="openNote">
+                                    <input type="hidden" name="id" value="<?php echo $note['id']; ?>">
+                                    <button type="submit" class="btn btn-outline-success">Open</button>
+                                </form>
+
                                 <button type="button" class="btn btn-outline-danger">Delete</button>
                                 <button type="button" class="btn btn-outline-warning">Edit</button>
                             </div>
