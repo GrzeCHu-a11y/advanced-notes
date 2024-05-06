@@ -38,14 +38,20 @@ $notes = $query->getNotes();
                                     echo $content;
                                     ?>
                                 </p>
-                                <form method="get" action="/?action=openNote"> <!-- Używamy GET, ponieważ przekazujemy parametry w adresie URL -->
-                                    <input type="hidden" name="action" value="openNote">
-                                    <input type="hidden" name="id" value="<?php echo $note['id']; ?>">
-                                    <button type="submit" class="btn btn-outline-success">Open</button>
-                                </form>
+                                <div class="d-flex flex-row gap-2">
+                                    <form method="get" action="/?action=openNote">
+                                        <input type="hidden" name="action" value="openNote">
+                                        <input type="hidden" name="id" value="<?php echo $note['id']; ?>">
+                                        <button type="submit" class="btn btn-outline-success">Open</button>
+                                    </form>
+                                    <form method="post" action="/?action=deleteNote">
+                                        <input type="hidden" name="action" value="deleteNote">
+                                        <input type="hidden" name="id" value="<?php echo $note['id']; ?>">
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    </form>
 
-                                <button type="button" class="btn btn-outline-danger">Delete</button>
-                                <button type="button" class="btn btn-outline-warning">Edit</button>
+                                    <button type="button" class="btn btn-outline-warning">Edit</button>
+                                </div>
                             </div>
                         </div>
                     </div>

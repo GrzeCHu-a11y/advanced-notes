@@ -14,9 +14,11 @@ class Controller
     const LOGIN_PAGE = "login";
     const REGISTER_PAGE = "register";
     const DASHBOARD_PAGE = "dashboard";
+    const CREATE_NOTE = "createdoc";
     const OPEN_NOTE = "openNote";
     const DELETE_NOTE = "deleteNote";
     const UPDATE_NOTE = "updateNote";
+
 
     public function __construct()
     {
@@ -42,6 +44,7 @@ class Controller
             case self::LOGIN_PAGE:
             case self::REGISTER_PAGE:
             case self::DASHBOARD_PAGE:
+            case self::CREATE_NOTE:
             case self::OPEN_NOTE:
                 return $action;
                 break;

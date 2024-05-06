@@ -28,6 +28,9 @@ class QueryController
             case Controller::OPEN_NOTE:
                 $this->openNote();
                 break;
+            case Controller::DELETE_NOTE:
+                $this->deleteNote();
+                break;
 
             default:
                 # code...
@@ -74,7 +77,7 @@ class QueryController
         $id = $_GET['id'];
         $con = $this->connect();
         $sql = $con->prepare("SELECT * FROM notes WHERE id = ?");
-        $sql->bind_param("i", $id);
+        $sql->bind_param("s", $id);
         $sql->execute();
 
         $result = $sql->get_result();
@@ -87,5 +90,15 @@ class QueryController
         }
 
         return $data;
+    }
+
+    public function deleteNote(): void
+    {
+        $id = $_POST['id'];
+        $con = $this->connect();
+        $sql = $con->prepare("DELETE FROM notes WHERE id = ?");
+        $sql->bind_param("s", $id);
+        $sql->execute();
+        header("Location: /?action=dashboard");
     }
 }
