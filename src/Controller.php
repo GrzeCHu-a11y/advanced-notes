@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 require_once("View.php");
+require_once("QueryController.php");
+
 
 class Controller
 {
@@ -12,6 +14,11 @@ class Controller
     const LOGIN_PAGE = "login";
     const REGISTER_PAGE = "register";
     const DASHBOARD_PAGE = "dashboard";
+    const CREATE_NOTE = "createdoc";
+    const OPEN_NOTE = "openNote";
+    const DELETE_NOTE = "deleteNote";
+    const UPDATE_NOTE = "editDoc";
+
 
     public function __construct()
     {
@@ -21,25 +28,30 @@ class Controller
     public function run(): void
     {
         $action = $this->getAction();
-        $this->pageRouting($action);
+        $page = $this->pageRouting($action);
 
-        $page = $action;
-        $this->view->render($page);
+        if (in_array($action, [self::DELETE_NOTE])) {
+            $queryController = new QueryController();
+            $queryController->handleAction($action);
+        } else
+
+            $this->view->render($page);
     }
 
     public function pageRouting(string $action): string
     {
         switch ($action) {
             case self::LOGIN_PAGE:
-                return self::LOGIN_PAGE;
-                break;
             case self::REGISTER_PAGE:
-                return self::REGISTER_PAGE;
-                break;
             case self::DASHBOARD_PAGE:
+            case self::CREATE_NOTE:
+            case self::OPEN_NOTE:
+            case self::UPDATE_NOTE:
+                return $action;
+                break;
+            case self::DELETE_NOTE:
                 return self::DASHBOARD_PAGE;
                 break;
-
             default:
                 return self::DEFAULT_PAGE;
                 break;

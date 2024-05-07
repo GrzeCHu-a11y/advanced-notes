@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -28,26 +29,11 @@ header p {
     margin-bottom: 30px;
 }
 
-.btn {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
 section {
     padding: 50px 0;
 }
 
 section h2 {
-    text-align: center;
     margin-bottom: 30px;
 }
 
@@ -61,4 +47,33 @@ footer {
 ul {
     padding-left: 0;
     list-style-type: none;
+}
+
+h3 {
+    margin: 20px 0;
+}
+
+#editor {
+    min-height: 90px;
+    border: 0.5px solid black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td {
+    padding: 8px;
 }
