@@ -101,4 +101,15 @@ class QueryController
         $sql->execute();
         header("Location: /?action=dashboard");
     }
+
+    public function updateNote(string $title, string $editorData)
+    {
+        echo $_GET["id"];
+        $noteId = $_GET["id"];
+        $con = $this->connect();
+        $sql = $con->prepare("UPDATE notes SET title = ?, content = ? WHERE id = ?");
+        $sql->bind_param("sss", $title, $editorData, $noteId);
+        $sql->execute();
+        header("Location: /?action=dashboard");
+    }
 }

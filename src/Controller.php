@@ -17,7 +17,7 @@ class Controller
     const CREATE_NOTE = "createdoc";
     const OPEN_NOTE = "openNote";
     const DELETE_NOTE = "deleteNote";
-    const UPDATE_NOTE = "updateNote";
+    const UPDATE_NOTE = "editDoc";
 
 
     public function __construct()
@@ -30,7 +30,7 @@ class Controller
         $action = $this->getAction();
         $page = $this->pageRouting($action);
 
-        if (in_array($action, [self::DELETE_NOTE, self::UPDATE_NOTE])) {
+        if (in_array($action, [self::DELETE_NOTE])) {
             $queryController = new QueryController();
             $queryController->handleAction($action);
         } else
@@ -46,10 +46,10 @@ class Controller
             case self::DASHBOARD_PAGE:
             case self::CREATE_NOTE:
             case self::OPEN_NOTE:
+            case self::UPDATE_NOTE:
                 return $action;
                 break;
             case self::DELETE_NOTE:
-            case self::UPDATE_NOTE:
                 return self::DASHBOARD_PAGE;
                 break;
             default:

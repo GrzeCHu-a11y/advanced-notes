@@ -49,8 +49,12 @@ $notes = $query->getNotes();
                                         <input type="hidden" name="id" value="<?php echo $note['id']; ?>">
                                         <button type="submit" class="btn btn-outline-danger">Delete</button>
                                     </form>
+                                    <form method="get" action="/?action=editDoc">
+                                        <input type="hidden" name="action" value="editDoc">
+                                        <input type="hidden" name="id" value="<?php echo $note['id']; ?>">
+                                        <button type="submit" class="btn btn-outline-warning">Edit</button>
+                                    </form>
 
-                                    <button type="button" class="btn btn-outline-warning">Edit</button>
                                 </div>
                             </div>
                         </div>
