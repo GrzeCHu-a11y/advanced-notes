@@ -40,7 +40,7 @@ $noteData = $query->openNote();
                 <input type="hidden" name="editorData" id="editorData">
                 <br>
                 <label class="form-label" for="noteTitle">New note title</label>
-                <input class="form-control" type="text" id="noteTitle" name="noteTitle" value="<?php echo $noteData["title"] ?>" />
+                <input class="form-control" type="text" id="noteTitle" name="noteTitle" value="<?php echo $noteData["title"] ?>" required />
                 <br>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>

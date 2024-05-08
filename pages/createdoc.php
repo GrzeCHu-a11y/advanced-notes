@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="hidden" name="editorData" id="editorData">
                 <br>
                 <label class="form-label" for="noteTitle">Note title</label>
-                <input class="form-control" type="text" id="noteTitle" name="noteTitle" />
+                <input class="form-control" type="text" id="noteTitle" name="noteTitle" required />
                 <br>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
