@@ -56,6 +56,9 @@ session_start() ?>
                             <a href="helpers/logout.php">Logout</a>
                         </button>
                     </div>
+                    <div class="d-flex align-items-center">
+                        <a href="">Hello <?php echo $_SESSION["username"] ?></a>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
